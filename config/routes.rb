@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get "/pages", to: 'pages#index'
-  post "/pages", to: 'pages#create'
+  get "/", to: 'pages#index'
+
 
 end

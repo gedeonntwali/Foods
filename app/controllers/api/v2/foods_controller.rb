@@ -9,7 +9,7 @@ class Api::V2::FoodsController < ApplicationController
     @food = Food.new(ingredient: params[:ingredient], spice: params[:spice], measurement: params[:measurement])
     @food.save
     render :show
-    
+
     render json: @food
   end
    
@@ -22,13 +22,13 @@ class Api::V2::FoodsController < ApplicationController
       ingredient = params[:ingredient],
       spice = params[:spice],
       measurement = params[:measurement])
-    render :show
+    render json: @food
   end
   
   def destroy
     @food = Food.find_by(id:params[:id])
     @food.destroy
-    render json: {message: "food deleted!!!!!"}
+    render json: @food 
   end
 end
 

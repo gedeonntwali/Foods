@@ -1,12 +1,28 @@
 <div ng-app="app">
   
   <div ng-controller="foodsCtrl" ng-init="setup()">
+
+    Filter Artists: <input ng-model="filterQuery">
+    <button ng-click="toggleOrder('ingredient')">Sort By Ingredient</button>
+    <button ng-click="toggleOrder('spice')">Sort By Spice</button>
     <h1>Number of Type of Foods: {{foods.length}}</h1>
-    <div ng-repeat="food in foods">
-      <p>{{food.ingredient}}</p>
-      <p>{{food.spice}}</p>
-      <p>{{food.measurement}}</p>
-    </div>
+
+     <table>
+      <tr>
+        <th> Ingredient</th>
+        <th> Spice</th>
+        <th> Measurement</th>
+      </tr>
+      <tr ng-repeat="food in foods | filter: {ingredient: filterQuery}  | orderBy:orderAttribute">        
+        <td>{{food.ingredient}}</td>
+        <td>{{food.spice}}</td>
+        <td>{{food.measurement}}</td>
+      </tr>
+      </table>
+      <button ng-click="deleteFood(food, $index)">Delete Food</button>
+      <button ng-click="updateFood(food, $index, foodIngredient, foodSpice, foodMeasurement)">Update Food</button>  
+    Add Food:
+    <div>
     Ingredient: <input ng-model="foodIngredient">
     Spice: <input ng-model="foodSpice">
     Measurement: <input ng-model="foodMeasurement">
