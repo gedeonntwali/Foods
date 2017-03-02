@@ -1,0 +1,17 @@
+<div ng-app="app">
+  
+  <div ng-controller="foodsCtrl" ng-init="setup()">
+    <h1>Number of Type of Foods: {{foods.length}}</h1>
+    <div ng-repeat="food in foods">
+      <p>{{food.ingredient}}</p>
+      <p>{{food.spice}}</p>
+      <p>{{food.measurement}}</p>
+    </div>
+    Ingredient: <input ng-model="foodIngredient">
+    Spice: <input ng-model="foodSpice">
+    Measurement: <input ng-model="foodMeasurement">
+      <button ng-click="addFood(foodIngredient, foodSpice, foodMeasurement)">Add Food</button>
+    </div>
+  </div>
+</div>
+

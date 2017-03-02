@@ -1,12 +1,16 @@
 class Api::V2::FoodsController < ApplicationController
   def index
     @foods =Food.all
+
+    render json: @foods
   end
 
   def create
     @food = Food.new(ingredient: params[:ingredient], spice: params[:spice], measurement: params[:measurement])
     @food.save
     render :show
+    
+    render json: @food
   end
    
   def show
