@@ -3,20 +3,22 @@
   <div ng-controller="foodsCtrl" ng-init="setup()">
 
     Filter Artists: <input ng-model="filterQuery">
-    <button ng-click="toggleOrder('ingredient')">Sort By Ingredient</button>
+
     <button ng-click="toggleOrder('spice')">Sort By Spice</button>
     <h1>Number of Type of Foods: {{foods.length}}</h1>
 
      <table>
       <tr>
-        <th> Ingredient</th>
+        <th> <link_to ng-click="toggleOrder('ingredient')">Ingredient</th>
         <th> Spice</th>
         <th> Measurement</th>
+        <th> Delete</th>
       </tr>
       <tr ng-repeat="food in foods | filter: {ingredient: filterQuery}  | orderBy:orderAttribute">        
         <td>{{food.ingredient}}</td>
         <td>{{food.spice}}</td>
         <td>{{food.measurement}}</td>
+        <td><button ng-click="deleteFood(food, $index)">Delete Food</button></td>
       </tr>
       </table>
       <button ng-click="deleteFood(food, $index)">Delete Food</button>
